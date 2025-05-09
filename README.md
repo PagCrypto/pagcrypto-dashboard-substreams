@@ -1,55 +1,55 @@
 # 📊 PagCrypto Dashboard Substreams
 
-Este projeto usa [The Graph Substreams](https://thegraph.com) para indexar transações na blockchain Solana que contenham o memo `paycrypto:{hash}`, representando operações do protocolo **PagCrypto**.
+This project uses [The Graph Substreams](https://thegraph.com) to index transactions on the Solana blockchain that contain the memo `paycrypto:{hash}`, representing operations of the **PagCrypto** protocol.
 
-## 🧠 O que ele faz?
+## What does he do?
 
-- Escaneia todos os blocos da Solana em busca de transações com memo padrão do PagCrypto.
-- Extrai:
+- Scans all Solana blocks for transactions with PagCrypto's standard memo.
+- Extracts:
   - `signature`
   - `slot`
   - `memo`
   - `fee`
-  - `success` (indica se a transação falhou ou não)
-- Expõe os dados para dashboards, analytics ou consumo por IA/alertas.
+  - `success` (indicates whether the transaction failed or not)
+- Exposes data for dashboards, analytics or consumption by AI/alerts.
 
-## 🚀 Como rodar
+## How to run
 
-### 1. Requisitos
+### 1. Requirements
 
 - `Rust` + `cargo`
 - `substreams` CLI  
-  Instale com:
+  Install with:
   ```bash
   curl -s https://get.substreams.dev | bash
   ```
 
-### 2. Clonar e preparar
+### 2. Clone and prepare
 
 ```bash
 git clone https://github.com/pagcrypto/pagcrypto-dashboard-substreams.git
 cd pagcrypto-dashboard-substreams
 ```
 
-### 3. Gerar os tipos Protobuf
+### 3. Generate Protobuf types
 
 ```bash
 substreams protogen
 ```
 
-### 4. Compilar o projeto
+### 4. Compile the project
 
 ```bash
 cargo build --release
 ```
 
-### 5. Gerar o pacote `.spkg`
+### 5. Generate the `.spkg` package
 
 ```bash
 substreams package
 ```
 
-### 6. Rodar localmente
+### 6. Run locally
 
 ```bash
 substreams run map_pagcrypto_tx \
@@ -58,7 +58,22 @@ substreams run map_pagcrypto_tx \
   --output json
 ```
 
-## 🛠 Estrutura do Projeto
+## Usage
+
+```bash
+substreams build
+substreams auth
+substreams gui       			  # Get streaming!
+```
+
+Optionally, you can publish your Substreams to the [Substreams Registry](https://substreams.dev).
+
+```bash
+substreams registry login         # Login to substreams.dev
+substreams registry publish       # Publish your Substreams to substreams.dev
+```
+
+## Project Structure
 
 ```
 .
@@ -71,17 +86,17 @@ substreams run map_pagcrypto_tx \
 ├── README.md
 ```
 
-## 📦 Deployment
+## Deployment
 
-1. Publique o `.spkg` gerado em [https://substreams.dev](https://substreams.dev).
-2. Use um sink como:
-   - `substreams-sink-postgres`
-   - `substreams-sink-sqlite`
-   - `substreams-sink-grpc` para backend personalizado
+1. Publish the generated `.spkg` to [https://substreams.dev](https://substreams.dev).
+2. Use a sink like:
+    - `substreams-sink-postgres`
+    - `substreams-sink-sqlite`
+    - `substreams-sink-grpc` for custom backend
 
-## 🤝 Contribuição
+## Contribution
 
-Pull requests são bem-vindos. Para maiores informações, fale com o time da [PagCrypto](https://pagcrypto.finance).
+Pull requests are welcome. For more information, contact the [PagCrypto](https://pagcrypto.finance) team.
 
 ## 🧾 Licença
 

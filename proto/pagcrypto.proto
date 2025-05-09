@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package pagcrypto;
+
+message Transaction {
+  string signature = 1;
+  uint64 slot = 2;
+  string memo = 3;
+  uint64 fee = 4;
+  bool success = 5;
+}
+
+message Transactions {
+  repeated Transaction items = 1;
+}
