@@ -1,0 +1,22 @@
+specVersion: v0.1.0
+package:
+  name: pagcrypto/dashboard
+  version: v0.1.0
+  doc: |
+    Indexa transações da PagCrypto na Solana usando o memo "paycrypto:{hash}"
+    e expõe dados para dashboards analíticos.
+
+protobuf:
+  files:
+    - pagcrypto.proto
+  importPaths:
+    - ./proto
+
+modules:
+  - name: map_pagcrypto_tx
+    kind: map
+    initialBlock: 0
+    inputs:
+      - source: sf.solana.type.v1.Block
+    output:
+      type: proto:pagcrypto.Transactions
